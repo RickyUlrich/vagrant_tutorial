@@ -2,40 +2,56 @@
 # Devops Part 1 - Vagrant, the gateway into devops
 
 
-## Slide 1 - What is Devops
+## Slide 1 - What is a `vagrant` and why do I want one?
+- "Vagrant provides `easy to configure`, `reproducible`, and `portable` work
+  environments built on top of industry-standard technology and controlled by a
+  single consistent workflow to help maximize the productivity and
+  flexibility of you and your team." - (https://www.vagrantup.com/intro/)
+- "If you are a developer, Vagrant will `isolate dependencies` and their
+  configuration within a `single disposable, consistent environment`,
+  without sacrificing any of the tools you are used to working
+  with (editors, browsers, debuggers, etc.)."
+- "If you are an operations engineer or DevOps engineer, Vagrant gives
+  you a `disposable environment` and `consistent workflow` for developing
+  and testing infrastructure management scripts."
 
 
-## Slide 2 - What is a 'vagrant' and why do I want one?
-
-
-## Slide 3 - The problem
+## Slide 2 - The problem
+```
+ricky$ ls -lh ~/VirtualBox\ VMs/gui_default_1544896071341_40321
+/
+total 12004888
+drwx------  4 ricky  staff   128B Dec 15 13:09 Logs
+-rw-------  1 ricky  staff   5.7G Dec 15 13:31 debian-9.5-amd64-disk001.vmdk
+-rw-------  1 ricky  staff   4.2K Dec 15 13:09 gui_default_1544896071341_40321.vbox
+```
 - How do you transfer a VM that is potentially GBs in size?
 
-- What people do?
-    1. Tranfer whole vm
+- Some temporary fixes that come to mind: 
+    1. Tranfer whole VM
     2. Give a recipe (ie. Start with this vm, then do x, y, z)
 
 
-## Slide 4 - Solution
+## Slide 3 - Solution
 - Vagrant provides a layer of abstraction for creating and provision vms
-- A Vagranfile is a deployment of vm on many different providers
+- A Vagranfile is a `recipe` for deploying a vm on many providers
     - virtualbox
     - amazon
     - docker
-- A Vagrantfile consists of three things
+- A Vagrantfile consists of three things:
     - System properties (base os layer, architecture, RAM CPUs, network config)
     - Dependencies (a script(s) for specifying what software to install)
     - A set of deployment configs (think config for web server)
 
-## Slide 5 - Usage
-- Create a `Vagrantfile` from a known template (root dir of project)
+## Slide 4 - Usage (demo)
+- Create a `Vagrantfile` from a known template
 - `vagrant up` - Start/provision the vm
 - `vagrant ssh` - Use the vm
 - `vagrant halt` - stop vm
 - `vagrant up` - Start vm
 - `vagrant destroy` - Remove VM for good 
 
-## Slide 6 - Anatomy of a Vagrantfile
+## Slide 5 - Anatomy of a Vagrantfile
 ```
 Vagrant.configure("2") do |config|
 
@@ -64,10 +80,11 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-## Slide 7 - Lessons learned
+## Slide 6 - Lessons learned
 - VMs are like baking
-    - it's hard to understand how something was made from simply the final product
-    - Vagrant and devops forces us to come up with "recipes" to make it easier to transfer environments for running/deploying code
+    - It's hard to understand how something was made from simply the final product
+    - Vagrant forces us to come up with "recipes"
+      to make it easier to transfer environments for running/deploying code
 
 - A `Vagrantfile` is essentially a recipe
     1. System properties (base layer, architecture, network configuration)
