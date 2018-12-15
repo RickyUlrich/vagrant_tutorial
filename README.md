@@ -42,6 +42,12 @@ drwx------  4 ricky  staff   128B Dec 15 13:09 Logs
     - System properties (base os layer, architecture, RAM CPUs, network config)
     - Dependencies (a script(s) for specifying what software to install)
     - A set of deployment configs (think config for web server)
+- Final size
+```
+ricky$ ls -l 2_gui/
+total 8
+-rw-r--r--  1 ricky  staff  1075 Dec 15 13:09 Vagrantfile
+```
 
 ## Slide 4 - Usage (demo)
 - Create a `Vagrantfile` from a known template
